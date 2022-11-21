@@ -77,7 +77,7 @@ function getWeather() {
         return
     } else {
         console.log(location);
-        var requestLatLon = "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=" + key;
+        var requestLatLon = "https://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=" + key;
         console.log(requestLatLon);
 
         fetch (requestLatLon)
@@ -105,7 +105,7 @@ function getWeather() {
                 }
                 console.log(coordinates);
                 
-                var requestWeather = "http://api.openweathermap.org/data/2.5/weather?" + coordinates + "&units=imperial&appid=" + key;
+                var requestWeather = "https://api.openweathermap.org/data/2.5/weather?" + coordinates + "&units=imperial&appid=" + key;
                 console.log(requestWeather)
 
                 fetch (requestWeather)
@@ -160,7 +160,7 @@ function getWeather() {
                     currentDescr.css("font-style", "italic").css("font-size", "14px");
                 })
 
-                var requestForecast = "http://api.openweathermap.org/data/2.5/forecast?" + coordinates + "&units=imperial&appid=" + key;
+                var requestForecast = "https://api.openweathermap.org/data/2.5/forecast?" + coordinates + "&units=imperial&appid=" + key;
                 console.log(requestForecast);
 
                 fetch (requestForecast)
