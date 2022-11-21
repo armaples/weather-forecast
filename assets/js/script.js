@@ -58,12 +58,12 @@ searchInput.attr("placeholder", "City Name")
 
 // Element Styling
 body.css("display", "flex").css("flex-flow", "column wrap").css("align-items", "center").css("text-align", "center").css("background-color", wildBlueYonder).css("width", "100vw");
-main.css("width", "90vw");
+main.css("width", "100vw");
 header.css("width", "100%");
 title.css("font", "bold max(10vw, 40px)" + pauline).css("padding", "10px").css("color", aliceBlue);
-searchContainer.css("width", "100%").css("display", "flex").css("flex-flow", "row no-wrap").css("justify-content", "center");
-searchInput.css("background-color", aliceBlue).css("border", "1px solid" + manatee).css("margin", "2.5px").css("width", "50%").css("height", "30px").css("border-radius", "5px").css("outline", "0px").css("font-family", proxima).css("font-size", "90%").css("color", manatee).css("padding", "2.5px").css("text-align", "center");
-searchButton.css("background-color", manatee).css("border", "0px solid" + wildBlueYonder).css("font-family", proxima).css("font-size", "90%").css("color", aliceBlue).css("margin", "2.5px").css("border-radius", "5px").css("width", "40%").css("height", "30px").css("padding", "2.5px");
+searchContainer.css("width", "100vw").css("display", "flex").css("flex-flow", "row wrap").css("justify-content", "center").css("align-items", "center");
+searchInput.css("background-color", aliceBlue).css("border", "1px solid" + manatee).css("margin", "2.5px").css("width", "50vw").css("height", "30px").css("border-radius", "5px").css("outline", "0px").css("font-family", proxima).css("font-size", "90%").css("color", manatee).css("padding", "2.5px").css("text-align", "center");
+searchButton.css("background-color", manatee).css("border", "0px solid" + wildBlueYonder).css("font-family", proxima).css("font-size", "90%").css("color", aliceBlue).css("margin", "2.5px").css("border-radius", "5px").css("width", "50vw").css("height", "30px").css("padding", "2.5px");
 forecastContainer.css("display", "flex").css("flex-flow", "column wrap").css("justify-content", "center").css("align-items", "center").css("width", "100%");
 
 
