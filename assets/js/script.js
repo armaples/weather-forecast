@@ -74,11 +74,14 @@ function getWeather() {
     
     // get user input
     if (!location) {
-        return
+        return;
     } else {
         console.log(location);
         var requestLatLon = "https://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=" + key;
         console.log(requestLatLon);
+        cities.push(location);
+        localStorage.setItem("cities", JSON.stringify(cities));
+        console.log("Cities: " + cities);
 
         fetch (requestLatLon)
             .then(function (response) {
@@ -225,8 +228,28 @@ function getWeather() {
     };
 };
 
-function createHistoryTab() {
+function checkHistory() {
+    var cities = JSON.parse(localStorage.getItem("cities"));
+    var locations = [...new Set(cities)];
+    console.log(locations);
+    if (locations) {
+        searchHistory.appendTo(searchContainer);
+        searchHistory.css("display", "flex").css("flex", "row wrap");
 
+        for (let i = 0; i < locations.length; i++) {
+            var cityButton = $("<button>");
+            cityButton.text(locations[i]);
+            cityButton.attr("id", "city" + i);
+            cityButton.appendTo(searchHistory);
+            cityButton.css("padding", "5px").css("margin", "10px").css("background-color", aliceBlue).css("border", "0px solid").css("border-radius", "5px").css("text-transform", "capitalize").css("color", manatee);
+
+            cityButton.click(function() {
+                console.log($("#city" + i).text());
+                var location = $("#city" + i).text();
+                getWeather();
+            });
+        };
+    };
 }
 
 // Event Listeners
@@ -238,6 +261,9 @@ searchButton.click(function() {
     forecastContainer.empty();
     currentForecast.empty();
     fiveDayForecast.empty();
-
+    searchHistory.empty();
     getWeather();
+    checkHistory();
 });
+
+checkHistory();
