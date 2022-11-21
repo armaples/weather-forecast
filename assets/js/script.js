@@ -70,7 +70,7 @@ forecastContainer.css("display", "flex").css("flex-flow", "column wrap").css("ju
 // Functions
 function getWeather() {
     var location = searchInput.val().split(" ").join("");
-    console.log(location);
+    console.log("Location: " + location);
     
     // get user input
     if (!location) {
@@ -241,10 +241,13 @@ function checkHistory() {
             cityButton.text(locations[i]);
             cityButton.attr("id", "city" + i);
             cityButton.appendTo(searchHistory);
-            cityButton.css("padding", "5px").css("margin", "10px").css("background-color", aliceBlue).css("border", "0px solid").css("border-radius", "5px").css("text-transform", "capitalize").css("color", manatee);
+            cityButton.css("padding", "10px").css("margin", "10px").css("background-color", aliceBlue).css("border", "0px solid").css("border-radius", "5px").css("text-transform", "capitalize").css("color", manatee);
 
             cityButton.click(function() {
-                console.log($("#city" + i).text());
+                forecastContainer.empty();
+                currentForecast.empty();
+                fiveDayForecast.empty();
+                console.log("Location History: " + $("#city" + i).text());
                 var location = $("#city" + i).text();
                 getWeather();
             });
