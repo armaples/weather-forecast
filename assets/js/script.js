@@ -79,9 +79,7 @@ function getWeather() {
         console.log(location);
         var requestLatLon = "https://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=" + key;
         console.log(requestLatLon);
-        cities.push(location);
-        localStorage.setItem("cities", JSON.stringify(cities));
-        console.log("Cities: " + cities);
+
 
         fetch (requestLatLon)
             .then(function (response) {
@@ -91,6 +89,9 @@ function getWeather() {
                 if (data.length === 0) {
                     return
                 }
+                cities.push(location);
+                localStorage.setItem("cities", JSON.stringify(cities));
+                console.log("Cities: " + cities);
                 console.log(data);
                 console.log(data[0].lat + " & " + data[0].lon);
                 var lat = data[0].lat;
@@ -242,18 +243,20 @@ function checkHistory() {
             cityButton.attr("id", "city" + i);
             cityButton.appendTo(searchHistory);
             cityButton.css("padding", "10px").css("margin", "10px").css("background-color", aliceBlue).css("border", "0px solid").css("border-radius", "5px").css("text-transform", "capitalize").css("color", manatee);
+            console.log("Location History: " + $("#city" + i).text());
+            var content = $("#city" + i);
+            console.log("Content Variable: " + content)
+            var location = content.text();
+        }
 
-            cityButton.click(function() {
-                forecastContainer.empty();
-                currentForecast.empty();
-                fiveDayForecast.empty();
-                console.log("Location History: " + $("#city" + i).text());
-                var location = $("#city" + i).text();
-                getWeather();
-            });
-        };
+        cityButton.click(function() {
+            forecastContainer.empty();
+            currentForecast.empty();
+            fiveDayForecast.empty();
+            getWeather();
+        });
     };
-}
+};
 
 // Event Listeners
 searchInput.keyup(function() {
